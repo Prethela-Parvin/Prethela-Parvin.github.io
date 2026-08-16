@@ -1,149 +1,728 @@
-<!-- Generated with Claude -->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prethela Parvin- Analytics Portfolio</title>
+    <title>Business Analytics Portfolio</title>
 
-    <style>
-      /* ============================================================
-       BASIC STYLES — students can tweak colors/fonts here
-       ============================================================ */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+  <style>
+
+    /* =========================================================
+       GLOBAL
+       ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .portfolio {
+      display: flex;
+      min-height: 100vh;
+    }
+
+
+    /* =========================================================
+       LEFT SIDEBAR
+       ========================================================= */
+
+    .sidebar {
+      width: 300px;
+      min-height: 100vh;
+
+      background: #0f172a;
+      color: white;
+
+      padding: 40px 28px;
+
+      position: fixed;
+      left: 0;
+      top: 0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    /* PROFILE PHOTO */
+
+    .profile-photo {
+      width: 190px;
+      height: 250px;
+
+      object-fit: cover;
+
+      border-radius: 12px;
+
+      margin-bottom: 22px;
+
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+
+
+    /* NAME */
+
+    .sidebar h1 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+
+    .degree-title {
+      text-align: center;
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+
+    /* TECHNICAL SKILLS */
+
+    .technical-skills {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+
+    /* NAVIGATION */
+
+    .navigation {
+      width: 100%;
+    }
+
+    .nav-button {
+      width: 100%;
+
+      border: none;
+
+      background: transparent;
+      color: #cbd5e1;
+
+      padding: 13px 16px;
+
+      margin-bottom: 7px;
+
+      font-size: 15px;
+
+      text-align: left;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+
+    .nav-button:hover {
+      background: #1e293b;
+      color: white;
+    }
+
+
+    .nav-button.active {
+      background: #14b8a6;
+      color: white;
+    }
+
+
+    /* SOCIAL LINKS */
+
+    .social-links {
+      margin-top: auto;
+
+      display: flex;
+      gap: 14px;
+
+      padding-top: 30px;
+    }
+
+    .social-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .social-links a:hover {
+      color: white;
+    }
+
+
+
+    /* =========================================================
+       RIGHT CONTENT
+       ========================================================= */
+
+    .main-content {
+
+      margin-left: 300px;
+
+      width: calc(100% - 300px);
+
+      padding: 60px;
+
+      max-width: 1300px;
+      padding: 50px 60px;
+    }
+
+
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+
+    .section.active {
+      display: block;
+    }
+
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(5px);
       }
 
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        color: #222;
-        background: #f7f7f7;
-        line-height: 1.5;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 40px 20px;
+    }
+
+
+    .section-title {
+
+      font-size: 34px;
+
+      color: #0f172a;
+
+      margin-bottom: 8px;
+    }
+
+
+    .section-subtitle {
+
+      color: #64748b;
+
+      margin-bottom: 32px;
+
+      max-width: 700px;
+    }
+
+
+
+    /* =========================================================
+       ABOUT ME
+       ========================================================= */
+
+    .about-card {
+
+      background: white;
+
+      border-radius: 14px;
+
+      padding: 35px;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+
+      max-width: 850px;
+    }
+
+
+    .about-card h2 {
+
+      margin-bottom: 15px;
+
+      color: #0f172a;
+    }
+
+
+    .about-card p {
+
+      margin-bottom: 18px;
+
+      color: #475569;
+    }
+
+
+    .skill-tags {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 20px;
+    }
+
+
+    .skill-tag {
+
+      background: #e6fffb;
+
+      color: #0f766e;
+
+      padding: 7px 13px;
+
+      border-radius: 20px;
+
+      font-size: 13px;
+
+      font-weight: bold;
+    }
+
+
+
+    /* =========================================================
+       EDUCATION CARDS
+       ========================================================= */
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      width: 100%;
+      max-width: 1100px;
+      align-items: stretch;
+    }
+
+
+    .education-card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: 0.25s;
+      min-height: 520px;
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .education-card:hover {
+
+      transform: translateY(-6px);
+
+      box-shadow: 0 9px 25px rgba(0,0,0,0.12);
+    }
+
+
+    .education-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: white;
+      padding: 28px;
+      display: block;
+    }
+
+
+    .education-card-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+
+    .education-card h3 {
+
+      font-size: 19px;
+
+      color: #0f172a;
+
+      margin-bottom: 8px;
+    }
+
+
+    .education-card .faculty {
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 2px;
+    }
+
+    .education-card .location {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+
+
+    .education-card .degree {
+
+      font-size: 14px;
+
+      color: #475569;
+
+      margin-bottom: 12px;
+    }
+
+
+    .education-card .year {
+
+      font-size: 13px;
+
+      color: #14b8a6;
+
+      font-weight: bold;
+    }
+
+
+    .view-details {
+
+      margin-top: auto;
+      padding-top: 16px;
+
+      color: #0f766e;
+
+      font-size: 13px;
+
+      font-weight: bold;
+    }
+
+
+
+    /* =========================================================
+       EDUCATION DETAILS
+       ========================================================= */
+
+    .education-details {
+
+      display: none;
+
+      background: white;
+
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+
+      max-width: 950px;
+    }
+
+
+    .school-banner {
+
+      width: 100%;
+
+      height: 300px;
+
+      object-fit: cover;
+    }
+
+
+    .education-detail-content {
+
+      padding: 35px;
+    }
+
+
+    .education-detail-content h2 {
+
+      font-size: 30px;
+
+      color: #0f172a;
+
+      margin-bottom: 4px;
+    }
+
+
+    .education-detail-content h3 {
+
+      font-size: 18px;
+
+      color: #475569;
+
+      margin-bottom: 5px;
+
+      font-weight: normal;
+    }
+
+
+    .education-date {
+
+      color: #14b8a6;
+
+      font-weight: bold;
+
+      margin-bottom: 25px;
+    }
+
+
+    .education-detail-content h4 {
+
+      margin-top: 25px;
+
+      margin-bottom: 10px;
+
+      color: #0f172a;
+
+      font-size: 18px;
+    }
+
+
+    .education-detail-content p {
+
+      color: #475569;
+    }
+
+
+    .back-button {
+
+      border: none;
+
+      background: transparent;
+
+      color: #0f766e;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      margin-bottom: 20px;
+    }
+
+
+    .back-button:hover {
+
+      text-decoration: underline;
+    }
+
+
+
+    /* =========================================================
+       WORK EXPERIENCE
+       ========================================================= */
+
+    .experience-container {
+
+      max-width: 900px;
+    }
+
+
+    .experience-card {
+
+      background: white;
+
+      padding: 28px;
+
+      border-radius: 14px;
+
+      margin-bottom: 20px;
+
+      border-left: 4px solid #14b8a6;
+
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+
+    .experience-card h3 {
+
+      color: #0f172a;
+
+      font-size: 20px;
+
+      margin-bottom: 4px;
+    }
+
+
+    .company {
+
+      color: #0f766e;
+
+      font-weight: bold;
+    }
+
+
+    .experience-date {
+
+      display: block;
+
+      margin: 5px 0 14px;
+
+      color: #64748b;
+
+      font-size: 13px;
+    }
+
+
+    .experience-card p {
+
+      color: #475569;
+    }
+
+
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
+
+    .project-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 24px;
+    }
+
+
+    .project-card {
+
+      background: white;
+
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+
+      transition: 0.25s;
+    }
+
+
+    .project-card:hover {
+
+      transform: translateY(-5px);
+
+      box-shadow: 0 9px 24px rgba(0,0,0,0.11);
+    }
+
+
+    .project-card img {
+
+      width: 100%;
+
+      height: 220px;
+
+      object-fit: cover;
+    }
+
+
+    .project-content {
+
+      padding: 23px;
+    }
+
+
+    .project-content h3 {
+
+      margin-bottom: 10px;
+
+      color: #0f172a;
+    }
+
+
+    .project-content p {
+
+      color: #475569;
+
+      font-size: 14px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .project-tools {
+
+      color: #0f766e;
+
+      font-size: 13px;
+
+      font-weight: bold;
+    }
+
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media(max-width: 1000px) {
+
+      .education-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      /* ---------- HEADER (photo + name + subheading) ---------- */
-      header {
-        text-align: center;
-        margin-bottom: 30px;
+      .project-grid {
+        grid-template-columns: 1fr;
       }
+    }
 
-      /* Empty space for photo — replace with your own <img> if you like */
-      .photo {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: #ddd;
-        border: 2px dashed #aaa;
-        margin: 0 auto 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 13px;
-      }
 
-      header h1 {
-        font-size: 28px;
-        margin-bottom: 6px;
-      } /* NAME */
-      header p {
-        font-size: 16px;
-        color: #555;
-      } /* EXPERIENCES */
+    @media(max-width: 700px) {
 
-      /* ---------- TABS ---------- */
-      .tabs {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 24px;
-      }
-
-      .tab-button {
-        padding: 10px 22px;
-        border: 1px solid #ccc;
-        background: #fff;
-        cursor: pointer;
-        font-size: 15px;
-        border-radius: 4px;
-      }
-
-      .tab-button.active {
-        background: #2c3e50;
-        color: #fff;
-        border-color: #2c3e50;
-      }
-
-      /* ---------- TAB CONTENT ---------- */
-      .tab-content {
-        display: none;
-      }
-      .tab-content.active {
+      .portfolio {
         display: block;
       }
 
-      .panel {
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 6px;
-        padding: 24px;
+
+      .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
       }
 
-      /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+
+      .profile-photo {
+
+        width: 150px;
+
+        height: 200px;
       }
 
-      .card {
-        border: 1px solid #eee;
-        border-radius: 6px;
-        overflow: hidden;
-        background: #fff;
+
+      .main-content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 30px 20px;
       }
 
-      /* Empty space for project photo */
-      .card-photo {
-        height: 120px;
-        background: #ddd;
-        border-bottom: 1px dashed #aaa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 12px;
+
+      .education-grid {
+        grid-template-columns: 1fr;
       }
 
-      .card-text {
-        padding: 14px;
-      }
-      .card-text h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
-      }
-      .card-text p {
-        font-size: 14px;
-        color: #555;
+      .social-links {
+
+        margin-top: 25px;
       }
 
-      /* ---------- MOBILE: stack cards vertically ---------- */
-      @media (max-width: 640px) {
-        .cards {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
+    }
+
+  </style>
+</head>
+
+
 
   <body>
     <div class="container">
@@ -152,9 +731,9 @@
          ============================================================ -->
       <header>
         <!-- Replace this div with <img src="your-photo.jpg" class="photo"> -->
-        <img src="IMG_5060.JPG" alt="Prethela Parvin" class="photo">
+        <div class="photo">Photo</div>
 
-        <h1>Prethela Parvin</h1>
+        <h1>Your Name</h1>
         <p>Business Analyst · SQL · Python · Tableau</p>
       </header>
 
@@ -165,71 +744,910 @@
         <button class="tab-button active" onclick="showTab('about')">
           About Me
         </button>
-        <button class="tab-button" onclick="showTab('projects')">
+
+
+        <button
+          class="nav-button"
+          onclick="showSection('education', this)"
+        >
+          Education
+        </button>
+
+
+        <button
+          class="nav-button"
+          onclick="showSection('experience', this)"
+        >
+          Work Experience
+        </button>
+
+
+        <button
+          class="nav-button"
+          onclick="showSection('projects', this)"
+        >
           Projects
         </button>
+
+      </nav>
+
+
+      <div class="social-links">
+
+        <a href="#" target="_blank">
+          Contact Me
+        </a>
+
+    
+
       </div>
 
-      <!-- ---------- TAB 1: ABOUT ME ---------- -->
-      <div id="about" class="tab-content active">
-        <div class="panel">
+    </aside>
+
+
+
+    <!-- ======================================================
+         RIGHT SIDE
+         ====================================================== -->
+
+    <main class="main-content">
+
+
+
+      <!-- ====================================================
+           ABOUT ME
+           ==================================================== -->
+
+      <section id="about" class="section active">
+
+
+        <h2 class="section-title">
+          About Me
+        </h2>
+
+
+        <p class="section-subtitle">
+          Welcome to my analytics portfolio.
+        </p>
+
+
+        <div class="about-card">
+
+          <h2>Hello, I'm Prethela.</h2>
+
           <p>
-            Write a short introduction about yourself here — your background,
-            skills, and what kind of business analytics role you're looking for.
+            I am a Master of Management in Analytics student with a
+            background in business analytics and experience applying
+            data-driven methods to real business problems.
           </p>
+
+          <p>
+            My interests include business intelligence, data
+            visualization, machine learning, database technologies,
+            and artificial intelligence. I enjoy transforming complex
+            datasets into insights and developing analytical solutions
+            that support better business decisions.
+          </p>
+
+
+          <h2>Technical Skills</h2>
+
+
+          <div class="skill-tags">
+
+            <span class="skill-tag">Python</span>
+
+            <span class="skill-tag">SQL</span>
+
+            <span class="skill-tag">Power BI</span>
+
+            <span class="skill-tag">Tableau</span>
+
+            <span class="skill-tag">R</span>
+
+            <span class="skill-tag">Machine Learning</span>
+
+            <span class="skill-tag">Data Visualization</span>
+
+            <span class="skill-tag">AI</span>
+
+          </div>
+
         </div>
-      </div>
 
-      <!-- ---------- TAB 2: PROJECTS ---------- -->
-      <div id="projects" class="tab-content">
-        <div class="cards">
-          <!-- CARD 1 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+      </section>
+
+
+
+
+      <!-- ====================================================
+           EDUCATION
+           ==================================================== -->
+
+      <section id="education" class="section">
+
+
+        <!-- EDUCATION LIST -->
+
+        <div id="education-list">
+
+
+          <h2 class="section-title">
+            Education
+          </h2>
+
+
+          <p class="section-subtitle">
+            Click on an institution to learn more about my academic
+            experience.
+          </p>
+
+
+
+          <div class="education-grid">
+
+
+            <!-- EDUCATION 1 -->
+
+            <div
+              class="education-card"
+              onclick="showEducationDetail('mma-detail')"
+            >
+
+              <img
+                src="mcgill-university.png"
+                alt="McGill University"
+              >
+
+              <div class="education-card-content">
+                <h3>McGill University</h3>
+                <p class="faculty">
+                   Desautels Faculty of Management
+                </p>
+                <p class="location">
+                  Montreal, Quebec, Canada
+                </p>
+                <p class="degree">
+                  Master of Management in Analytics
+                </p>
+                <p class="year">
+                  2026 – Present
+                </p>
+
+                 <p class="view-details">
+                  View Details →
+                </p>
+              </div>
             </div>
+
+
+            <!-- EDUCATION 2 -->
+
+            <div
+              class="education-card"
+              onclick="showEducationDetail('bcom-detail')"
+            >
+
+              <img
+                src="mcgill-university.png"
+                alt="McGill University"
+              >
+
+              <div class="education-card-content">
+
+                <h3>McGill University</h3>
+
+                <p class="faculty">
+                  Desautels Faculty of Management
+                </p>
+
+                <p class="location">
+                  Montreal, Quebec, Canada
+                </p>
+
+                <p class="degree">
+                  Bachelor of Commerce – Business Analytics
+                </p>
+
+                <p class="year">
+                  2022 – 2026
+                </p>
+
+                <p class="view-details">
+                  View Details →
+                </p>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- EDUCATION 3 -->
+
+            <div
+              class="education-card"
+              onclick="showEducationDetail('school3-detail')"
+            >
+
+              <img
+                src="school3.jpg"
+                alt="Previous School"
+              >
+
+              <div class="education-card-content">
+
+                <h3>Mastermind School</h3>
+
+          
+
+                <p class="location">
+                  Dhaka, Bangladesh
+                </p>
+
+                <p class="degree">
+                  A levels - Cambridge International Examinations
+                </p>
+
+                <p class="year">
+                  2020 – 2022
+                </p>
+
+                <p class="view-details">
+                  View Details →
+                </p>
+
+              </div>
+
+            </div>
+
+
           </div>
 
-          <!-- CARD 2 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
-            </div>
-          </div>
-
-          <!-- CARD 3 -->
-          <div class="card">
-            <div class="card-photo">Project Image</div>
-            <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- ============================================================
-       SIMPLE TAB SWITCHING SCRIPT
-       ============================================================ -->
-    <script>
-      function showTab(id) {
-        // hide all tab contents
-        document.querySelectorAll(".tab-content").forEach(function (el) {
-          el.classList.remove("active");
+
+
+
+        <!-- ==================================================
+             MMA DETAILS
+             ================================================== -->
+
+        <div
+          id="mma-detail"
+          class="education-details"
+        >
+
+
+          <img
+            src="mcgill-campus.jpg"
+            alt="McGill University Campus"
+            class="school-banner"
+          >
+
+
+          <div class="education-detail-content">
+
+
+            <button
+              class="back-button"
+              onclick="showEducationList()"
+            >
+              ← Back to Education
+            </button>
+
+
+            <h2>
+              McGill University
+            </h2>
+
+
+            <h3>
+              Master of Management in Analytics
+            </h3>
+
+
+            <p class="education-date">
+              2026 – Present
+            </p>
+
+
+            <h4>
+              About the Program
+            </h4>
+
+
+            <p>
+              I am currently pursuing a Master of Management in
+              Analytics at McGill University. The program combines
+              advanced analytical methods with business strategy and
+              focuses on applying data, machine learning, optimization,
+              and artificial intelligence to real-world business
+              problems.
+            </p>
+
+
+            <h4>
+              Key Areas
+            </h4>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Machine Learning
+              </span>
+
+              <span class="skill-tag">
+                Decision Analytics
+              </span>
+
+              <span class="skill-tag">
+                Python
+              </span>
+
+              <span class="skill-tag">
+                Database Management
+              </span>
+
+              <span class="skill-tag">
+                Artificial Intelligence
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- ==================================================
+             BCOM DETAILS
+             ================================================== -->
+
+        <div
+          id="bcom-detail"
+          class="education-details"
+        >
+
+
+          <img
+            src="mcgill logo.png"
+            alt="McGill Desautels"
+            class="school-banner"
+          >
+
+
+          <div class="education-detail-content">
+
+
+            <button
+              class="back-button"
+              onclick="showEducationList()"
+            >
+              ← Back to Education
+            </button>
+
+
+            <h2>
+              McGill University
+            </h2>
+
+
+            <h3>
+              Bachelor of Commerce
+            </h3>
+
+
+            <p class="education-date">
+              2022 – 2026
+            </p>
+
+
+            <h4>
+              Academic Focus
+            </h4>
+
+
+            <p>
+              I completed my Bachelor of Commerce at the Desautels
+              Faculty of Management with a major in Business Analytics.
+              My studies combined business strategy with quantitative
+              analysis, programming, database management, machine
+              learning, and data visualization.
+            </p>
+
+
+            <h4>
+              Key Areas
+            </h4>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Business Analytics
+              </span>
+
+              <span class="skill-tag">
+                Python
+              </span>
+
+              <span class="skill-tag">
+                SQL
+              </span>
+
+              <span class="skill-tag">
+                Power BI
+              </span>
+
+              <span class="skill-tag">
+                Tableau
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+        <!-- ==================================================
+             THIRD SCHOOL DETAILS
+             ================================================== -->
+
+        <div
+          id="school3-detail"
+          class="education-details"
+        >
+
+
+          <img
+            src="school3-banner.jpg"
+            alt="Previous School"
+            class="school-banner"
+          >
+
+
+          <div class="education-detail-content">
+
+
+            <button
+              class="back-button"
+              onclick="showEducationList()"
+            >
+              ← Back to Education
+            </button>
+
+
+            <h2>
+              Previous Institution
+            </h2>
+
+
+            <h3>
+              Degree / Qualification
+            </h3>
+
+
+            <p class="education-date">
+              Year – Year
+            </p>
+
+
+            <h4>
+              About My Experience
+            </h4>
+
+
+            <p>
+              Add a short description of your experience at this
+              institution, including important subjects,
+              achievements, extracurricular involvement, or other
+              experiences that contributed to your academic and
+              professional development.
+            </p>
+
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+
+      <!-- ====================================================
+           WORK EXPERIENCE
+           ==================================================== -->
+
+      <section id="experience" class="section">
+
+
+        <h2 class="section-title">
+          Work Experience
+        </h2>
+
+
+        <p class="section-subtitle">
+          Professional experiences where I applied technology,
+          analytics, and business problem-solving.
+        </p>
+
+
+
+        <div class="experience-container">
+
+
+          <div class="experience-card">
+
+            <h3>
+              Data Workflow Assistant
+            </h3>
+
+            <span class="company">
+              McGill University – Desautels IT
+            </span>
+
+            <span class="experience-date">
+              2025
+            </span>
+
+            <p>
+              Worked on data workflow automation and analytics solutions
+              using Excel, Power Query, Python, Power BI, and other
+              business intelligence technologies.
+            </p>
+
+          </div>
+
+
+
+          <div class="experience-card">
+
+            <h3>
+              IT Assistant
+            </h3>
+
+            <span class="company">
+              McGill Executive Institute
+            </span>
+
+            <span class="experience-date">
+              2023 – Present
+            </span>
+
+            <p>
+              Supported technology-enabled executive education programs,
+              developed documentation, provided technical support, and
+              helped improve operational efficiency.
+            </p>
+
+          </div>
+
+
+
+          <div class="experience-card">
+
+            <h3>
+              Internship / Position
+            </h3>
+
+            <span class="company">
+              Company Name
+            </span>
+
+            <span class="experience-date">
+              Year
+            </span>
+
+            <p>
+              Add a short description of your responsibilities,
+              accomplishments, tools used, and the business impact of
+              your work.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+
+      <!-- ====================================================
+           PROJECTS
+           ==================================================== -->
+
+      <section id="projects" class="section">
+
+
+        <h2 class="section-title">
+          Projects
+        </h2>
+
+
+        <p class="section-subtitle">
+          Selected analytics and technology projects demonstrating
+          how I apply data to solve business problems.
+        </p>
+
+
+
+        <div class="project-grid">
+
+
+          <!-- PROJECT 1 -->
+
+          <div class="project-card">
+
+            <img
+              src="rag-project.jpg"
+              alt="AI Job Search Platform"
+            >
+
+            <div class="project-content">
+
+              <h3>
+                AI-Powered Job Search Platform
+              </h3>
+
+              <p>
+                Developed a semantic job search prototype using vector
+                databases and Retrieval-Augmented Generation to match
+                natural-language job queries with relevant job
+                postings.
+              </p>
+
+              <p class="project-tools">
+                Python · ChromaDB · RAG · Llama · Vector Search
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- PROJECT 2 -->
+
+          <div class="project-card">
+
+            <img
+              src="agropur-project.jpg"
+              alt="Agropur Analytics Project"
+            >
+
+            <div class="project-content">
+
+              <h3>
+                Agropur Consumer Analytics
+              </h3>
+
+              <p>
+                Analyzed consumer and market data to identify customer
+                segments and provide data-driven product recommendations
+                for the frozen dessert category.
+              </p>
+
+              <p class="project-tools">
+                Python · Power BI · Data Analysis · Consumer Analytics
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- PROJECT 3 -->
+
+          <div class="project-card">
+
+            <img
+              src="airline-project.jpg"
+              alt="Airline Delay Prediction"
+            >
+
+            <div class="project-content">
+
+              <h3>
+                Airline Delay Prediction
+              </h3>
+
+              <p>
+                Developed predictive models using airline operational
+                data to identify factors associated with flight delays
+                and evaluate model performance.
+              </p>
+
+              <p class="project-tools">
+                Python · Machine Learning · Pandas · Scikit-learn
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- PROJECT 4 -->
+
+          <div class="project-card">
+
+            <img
+              src="powerbi-project.jpg"
+              alt="Power BI Dashboard"
+            >
+
+            <div class="project-content">
+
+              <h3>
+                Business Intelligence Dashboard
+              </h3>
+
+              <p>
+                Developed interactive dashboards that transform
+                operational data into accessible visual insights for
+                business users and decision-makers.
+              </p>
+
+              <p class="project-tools">
+                Power BI · Power Query · Excel · Data Visualization
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+       ======================================================== -->
+
+  <script>
+
+
+    /* MAIN NAVIGATION */
+
+    function showSection(sectionId, button) {
+
+
+      /* Hide all sections */
+
+      document
+        .querySelectorAll(".section")
+        .forEach(function(section) {
+
+          section.classList.remove("active");
+
         });
-        // remove active state from all buttons
-        document.querySelectorAll(".tab-button").forEach(function (btn) {
+
+
+      /* Show selected section */
+
+      document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+
+
+      /* Remove active style from buttons */
+
+      document
+        .querySelectorAll(".nav-button")
+        .forEach(function(btn) {
+
           btn.classList.remove("active");
+
         });
-        // show the selected tab + highlight the clicked button
-        document.getElementById(id).classList.add("active");
-        event.target.classList.add("active");
+
+
+      /* Highlight clicked button */
+
+      button.classList.add("active");
+
+
+
+      /* Reset education whenever Education is opened */
+
+      if(sectionId === "education") {
+
+        showEducationList();
+
       }
-    </script>
-  </body>
+
+    }
+
+
+
+
+    /* OPEN EDUCATION DETAIL */
+
+    function showEducationDetail(detailId) {
+
+
+      /* Hide education cards */
+
+      document
+        .getElementById("education-list")
+        .style.display = "none";
+
+
+      /* Hide all detail pages */
+
+      document
+        .querySelectorAll(".education-details")
+        .forEach(function(detail) {
+
+          detail.style.display = "none";
+
+        });
+
+
+      /* Show selected education */
+
+      document
+        .getElementById(detailId)
+        .style.display = "block";
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+
+
+    /* RETURN TO EDUCATION CARDS */
+
+    function showEducationList() {
+
+
+      document
+        .querySelectorAll(".education-details")
+        .forEach(function(detail) {
+
+          detail.style.display = "none";
+
+        });
+
+
+      document
+        .getElementById("education-list")
+        .style.display = "block";
+
+    }
+
+
+  </script>
+
+
+</body>
+
 </html>
